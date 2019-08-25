@@ -37,7 +37,7 @@ public class ItemApiLogicService implements CrudInterface<ItemApiRequest, ItemAp
                 .price(body.getPrice())
                 .brandName(body.getBrandName())
                 .registeredAt(LocalDateTime.now())
-                .partner(partnerRepository.getOne(body.getId()))
+                .partner(partnerRepository.getOne(body.getPartnerId()))
                 .build();
 
         Item newItem = itemRepository.save(item);

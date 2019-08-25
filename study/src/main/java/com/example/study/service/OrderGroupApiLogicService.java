@@ -95,6 +95,7 @@ public class OrderGroupApiLogicService implements CrudInterface<OrderGroupApiReq
         OrderGroupApiResponse body = OrderGroupApiResponse
                 .builder()
                 .id(orderGroup.getId())
+                .status(orderGroup.getStatus())
                 .orderType(orderGroup.getOrderType())
                 .revAddress(orderGroup.getRevAddress())
                 .revName(orderGroup.getRevName())
