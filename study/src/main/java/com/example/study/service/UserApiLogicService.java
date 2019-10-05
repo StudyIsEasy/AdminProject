@@ -4,6 +4,7 @@ import com.example.study.ifs.CrudInterface;
 import com.example.study.model.entity.User;
 import com.example.study.model.enumclass.UserStatus;
 import com.example.study.model.network.Header;
+import com.example.study.model.network.Pagination;
 import com.example.study.model.network.request.UserApiRequest;
 import com.example.study.model.network.response.UserApiResponse;
 import com.example.study.repository.UserRepository;
@@ -106,7 +107,14 @@ public class UserApiLogicService implements CrudInterface<UserApiRequest , UserA
                 .map(user -> response(user))
                 .collect(Collectors.toList());
 
-        return Header.OK(userApiResponseList);
+        Pagination pagination = Pagination.builder()
+                .totalPages(users.getTotalPages())
+                .totalElements(users.getTotalElements())
+                .currentPage(users.getNumber())
+                .currentElements(users.getNumberOfElements())
+                .build();
+
+        return Header.OK(userApiResponseList,pagination);
     }
 
     private UserApiResponse response(User user){
