@@ -56,7 +56,7 @@ public class UserApiController implements CrudInterface<UserApiRequest, UserApiR
         return userApiLogicService.delete(id);
     }
 
-    @GetMapping("/search")
+    @GetMapping("")
     public Header<List<UserApiResponse>> findAll(@PageableDefault(sort = { "id" }, direction = Sort.Direction.ASC)Pageable pageable){
         log.info("{}",pageable);
         return userApiLogicService.search(pageable);
